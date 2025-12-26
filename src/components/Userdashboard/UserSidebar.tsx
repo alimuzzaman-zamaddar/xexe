@@ -19,11 +19,10 @@ import Loader from "../Loader/Loader";
 import { MdPassword } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-// ✅ Interface fix
 interface UpdateUserPayload {
   name: string;
   email: string;
-  avatar?: File | null; // Optional avatar field
+  avatar?: File | null; 
 }
 
 export interface NavItem {
@@ -32,43 +31,6 @@ export interface NavItem {
   path: string;
 }
 
-// export const navMenu: NavItem[] = [
-//   {
-//     name: "Go Home",
-//     icon: <FaHome />,
-//     path: "/",
-//   },
-//   {
-//     name: "Scan Files",
-//     icon: <Scanfiles />,
-//     path: "/userdashboard",
-//   },
-//   {
-//     name: "Reports",
-//     icon: <Reposts />,
-//     path: "/userdashboard/reports",
-//   },
-//   {
-//     name: "Change Password",
-//     icon: <Reposts />,
-//     path: "/userdashboard/change-password",
-//   },
-//   // Conditionally push this item
-//   ...(data?.plan === "Enterprise" &&
-//   user?.role !== "viewer" &&
-//   user?.role !== "analyst"
-//     ? [
-//         {
-//           name: "Create User",
-//           icon: <Reposts />,
-//           path: "/userdashboard/create-user",
-//         },
-//       ]
-//     : []),
-// ];
-
-
-// ✅ Extracted and functional UpdateUserForm
 const UpdateUserForm = ({
   user,
   onClose,
@@ -91,7 +53,7 @@ const UpdateUserForm = ({
     updateUser(payload, {
       onSuccess: () => {
         refetchUser();
-        onClose(); // ✅ Close modal on success
+        onClose(); 
         toast.success("User updated success");
       },
     });
@@ -153,12 +115,11 @@ const UpdateUserForm = ({
   );
 };
 
-// ✅ Main Sidebar Component
 const UserSidebar = () => {
   const { user }: { user: User | null } = useAuth();
   console.log(user);
-  // const storUser = localStorage.getItem("user");
-  // console.log(storUser);
+  const storUser = localStorage.getItem("user");
+  console.log(storUser);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -167,12 +128,13 @@ const UserSidebar = () => {
   const [loading, setLoading] = useState(true);
 
   const { data } = useCurrentSubscription();
+  console.log(data, "current subcriptions");
   const { mutate: logout, isPending } = useLogout();
 
   const showModal = () => {
     setOpen(true);
     setLoading(true);
-    setTimeout(() => setLoading(false), 1000); // loading simulation
+    setTimeout(() => setLoading(false), 1000); 
   };
 
   const isPathActive = (path: string) => location.pathname === path;
@@ -185,11 +147,10 @@ const UserSidebar = () => {
   const { mutate: cancel, isError, isSuccess } = useCancelSubscription();
 
   const handleCancel = () => {
-    cancel(); // Trigger the cancel subscription mutation
+    cancel(); 
   };
 
 
-  // inside UserSidebar component
 const navMenu = useMemo(() => {
   const menu: NavItem[] = [
     {
@@ -209,7 +170,6 @@ const navMenu = useMemo(() => {
     },
   ];
 
-  // ✅ Conditionally insert "Create User"
   if (
     data?.plan === "Enterprise" &&
     user?.role !== "viewer" &&
@@ -222,7 +182,6 @@ const navMenu = useMemo(() => {
     });
   }
 
-  // ✅ Always add Change Password at the end
   menu.push({
     name: "Change Password",
     icon: <MdPassword />,

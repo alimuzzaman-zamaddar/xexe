@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, createContext, useContext, useEffect } from "react";
 import {
   DndContext,
@@ -21,6 +22,7 @@ import { Table, Button, } from "antd";
 import { DeleteOutlined, FileOutlined, } from "@ant-design/icons";
 import { useDashboardData } from "../../Services/admin.hook";
 import { useDeleteScannedFile } from "../../Services/scan.hook";
+import ScanCardsGrid from "../Userdashboard/ScanCardsGrid";
 
 export interface DataType {
   key: string;
@@ -120,9 +122,6 @@ const DataTable: React.FC = () => {
     active: -1,
     over: -1,
   });
-  
-  // const [dataSource, setDataSource] = useState<DataType[]>(data?.scansFiles || []);
-  
    const { data, } = useDashboardData();
   
   console.log(data, "from data table from admin dashboard");
@@ -131,14 +130,8 @@ const DataTable: React.FC = () => {
   const [dataSource, setDataSource] = useState<DataType[]>([]);
   const { mutate: deleteFile  } = useDeleteScannedFile(); 
 
-  // ✅ Update state when new data comes in
-  useEffect(() => {
-    // Check if the data has content before updating
-//       if (!Array.isArray(data?.scansFiles
-// )) return;
-//     if (data?.scansFiles?.length === 0) return; // If data is empty, do not update
 
-    // Map through the data and format it as per the table requirements
+  useEffect(() => {
 const formattedData: DataType[] = data?.scansFiles?.map((item) => {
   const fileName = item.file_url?.split("/").pop() || item?.url?.split("/").pop();
   return {
@@ -152,23 +145,10 @@ const formattedData: DataType[] = data?.scansFiles?.map((item) => {
     
   };
 }) ?? [];
-    // Only update the state if data has changed or is non-empty
-    setDataSource(formattedData); // Set the formatted data into state
+    setDataSource(formattedData); 
   }, [data?.scansFiles
-]); // Only run
+]); 
 
-
-  // const toggleSave = (key: string) => {
-  //   setDataSource(prev =>
-  //     prev.map(item =>
-  //       item.key === key ? { ...item, saved: !item.saved } : item
-  //     )
-  //   );
-  // };
-
-  // const handleEdit = (key: string) => {
-  //   alert(`Editing row ${key}`);
-  // };
 
   const handleDelete = async (key: string) => {
     try {
@@ -239,29 +219,6 @@ const formattedData: DataType[] = data?.scansFiles?.map((item) => {
       onHeaderCell: () => ({ id: "date" }),
       onCell: () => ({ id: "date" }),
     },
-    // {
-    //   title: "Action",
-    //   key: "action",
-    //   render: (_: any, record: DataType) => (
-    //     <Button
-    //       style={{
-    //         height: "48px",
-    //         width: "140px",
-    //         color: record.saved ? "#4BB23D" : "#FF4D4F",
-    //         background: record.saved ? "#F3FFEB" : "#FFEFEF",
-    //         border: `1px solid ${record.saved ? "#E2F5D5" : "#FFA39E"}`,
-    //         fontWeight: 600,
-    //         fontSize: "14px",
-    //         borderRadius: "8px",
-    //       }}
-    //       onClick={() => toggleSave(record.key)}
-    //     >
-    //       {record.saved ? "Save" : "Fraud Alert"}
-    //     </Button>
-    //   ),
-    //   onHeaderCell: () => ({ id: "action" }),
-    //   onCell: () => ({ id: "action" }),
-    // },
 
     {
       title: "Status",
@@ -282,29 +239,7 @@ const formattedData: DataType[] = data?.scansFiles?.map((item) => {
       onHeaderCell: () => ({ id: "status" }),
       onCell: () => ({ id: "status" }),
     },
-    // {
-    //   title: "",
-    //   key: "edit",
-    //   render: (_: any, record: DataType) => {
-    //     const menu = (
-    //       <Menu>
-    //         <Menu.Item key="edit" onClick={() => handleEdit(record.key)}>
-    //           Edit
-    //         </Menu.Item>
-    //         <Menu.Item key="delete" onClick={() => handleDelete(record.key)}>
-    //           Delete
-    //         </Menu.Item>
-    //       </Menu>
-    //     );
-    //     return (
-    //       <Dropdown overlay={menu} trigger={["click"]}>
-    //         <Button icon={<MoreOutlined />} />
-    //       </Dropdown>
-    //     );
-    //   },
-    //   onHeaderCell: () => ({ id: "edit" }),
-    //   onCell: () => ({ id: "edit" }),
-    // },
+
     {
   title: "",
   key: "delete",
@@ -383,6 +318,11 @@ const formattedData: DataType[] = data?.scansFiles?.map((item) => {
           }
         </th>
       </DragOverlay>
+
+
+
+<ScanCardsGrid data={data?.scansFiles || []} />
+
     </DndContext>
   );
 };

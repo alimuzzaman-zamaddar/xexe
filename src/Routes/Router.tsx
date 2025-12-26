@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
     path: "/admindashboard",
     element: (
       <PrivateRoute allowedRoles={["admin"]}>
-        <AdminDashboardLayout />{" "}
+        <AdminDashboardLayout />
       </PrivateRoute>
     ),
     errorElement: <Error />,
@@ -63,8 +63,8 @@ export const router = createBrowserRouter([
     path: "/userdashboard",
     element: (
       <PrivateRoute allowedRoles={["user", "viewer", "analyst"]}>
-        {" "}
-        <UserdashboardLayout />{" "}
+        
+        <UserdashboardLayout />
       </PrivateRoute>
     ),
     errorElement: <Error />,

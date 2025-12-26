@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, createContext, useContext, useEffect } from "react";
 import {
   DndContext,
@@ -20,6 +21,7 @@ import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import { Table, Button, } from "antd";
 import { DeleteOutlined, FileOutlined, } from "@ant-design/icons";
 import {  useDeleteScannedFile, useScannedUrls } from "../../Services/scan.hook";
+import ScanCardsGrid from "../../components/Userdashboard/ScanCardsGrid";
 
 export interface DataType {
   key: string;
@@ -234,29 +236,7 @@ const formattedData: DataType[] = data?.map((item) => {
       onHeaderCell: () => ({ id: "date" }),
       onCell: () => ({ id: "date" }),
     },
-    // {
-    //   title: "Action",
-    //   key: "action",
-    //   render: (_: any, record: DataType) => (
-    //     <Button
-    //       style={{
-    //         height: "48px",
-    //         width: "140px",
-    //         color: record.saved ? "#4BB23D" : "#FF4D4F",
-    //         background: record.saved ? "#F3FFEB" : "#FFEFEF",
-    //         border: `1px solid ${record.saved ? "#E2F5D5" : "#FFA39E"}`,
-    //         fontWeight: 600,
-    //         fontSize: "14px",
-    //         borderRadius: "8px",
-    //       }}
-    //       onClick={() => toggleSave(record.key)}
-    //     >
-    //       {record.saved ? "Save" : "Fraud Alert"}
-    //     </Button>
-    //   ),
-    //   onHeaderCell: () => ({ id: "action" }),
-    //   onCell: () => ({ id: "action" }),
-    // },
+
 
     {
       title: "Status",
@@ -277,29 +257,6 @@ const formattedData: DataType[] = data?.map((item) => {
       onHeaderCell: () => ({ id: "status" }),
       onCell: () => ({ id: "status" }),
     },
-    // {
-    //   title: "",
-    //   key: "edit",
-    //   render: (_: any, record: DataType) => {
-    //     const menu = (
-    //       <Menu>
-    //         <Menu.Item key="edit" onClick={() => handleEdit(record.key)}>
-    //           Edit
-    //         </Menu.Item>
-    //         <Menu.Item key="delete" onClick={() => handleDelete(record.key)}>
-    //           Delete
-    //         </Menu.Item>
-    //       </Menu>
-    //     );
-    //     return (
-    //       <Dropdown overlay={menu} trigger={["click"]}>
-    //         <Button icon={<MoreOutlined />} />
-    //       </Dropdown>
-    //     );
-    //   },
-    //   onHeaderCell: () => ({ id: "edit" }),
-    //   onCell: () => ({ id: "edit" }),
-    // },
 {
   title: "",
   key: "delete",
@@ -345,6 +302,7 @@ const formattedData: DataType[] = data?.map((item) => {
   };
 
   return (
+<>
     <DndContext
       sensors={sensors}
       modifiers={[restrictToHorizontalAxis]}
@@ -381,6 +339,11 @@ const formattedData: DataType[] = data?.map((item) => {
         </th>
       </DragOverlay>
     </DndContext>
+
+
+<ScanCardsGrid data={data || []} />
+
+</>
   );
 };
 

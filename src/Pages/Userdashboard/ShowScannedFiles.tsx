@@ -21,6 +21,7 @@ import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import { Table, Button, } from "antd";
 import { DeleteOutlined, FileOutlined, } from "@ant-design/icons";
 import {  useDeleteScannedFile, useScannedFiles } from "../../Services/scan.hook";
+import ScanCardsGrid from "../../components/Userdashboard/ScanCardsGrid";
 
 export interface DataType {
   key: string;
@@ -294,6 +295,7 @@ const formattedData: DataType[] = data?.map((item) => {
   };
 
   return (
+<>
     <DndContext
       sensors={sensors}
       modifiers={[restrictToHorizontalAxis]}
@@ -330,6 +332,11 @@ const formattedData: DataType[] = data?.map((item) => {
         </th>
       </DragOverlay>
     </DndContext>
+
+
+<ScanCardsGrid data={data || []} />
+
+</>
   );
 };
 
