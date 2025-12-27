@@ -21,12 +21,12 @@ const Dashboard = () => {
 
 
   return (
-    <section className="2xl:pl-10 pt-[68px] 2xl:pr-[100px] xl:px-0 px-4">
+    <section className="2xl:pl-10 pt-17 2xl:pr-25 xl:px-0 px-4">
       <h3 className="text-[32px] font-popins font-semibold text-[#111315]">
         Overview
       </h3>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-x-[26px] gap-y-6 mt-5 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-x-6.5 gap-y-6 mt-5 w-full">
         <Dashboardcard
           icon={<Dashboardcardicon />}
           title="Total Scans"
