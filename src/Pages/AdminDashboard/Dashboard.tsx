@@ -14,12 +14,8 @@ export interface DashboardSummaryData {
 const Dashboard = () => {
 
   const { data, isLoading, isError } = useDashboardData();
-
   if (isLoading) return <p>Loading...</p>;
   if (isError || !data) return <p>Failed to load dashboard data.</p>;
-
-
-
   return (
     <section className="2xl:pl-10 pt-17 2xl:pr-25 xl:px-0 px-4">
       <h3 className="text-[32px] font-popins font-semibold text-[#111315]">
