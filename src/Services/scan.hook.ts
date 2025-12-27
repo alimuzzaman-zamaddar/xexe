@@ -86,16 +86,16 @@ export interface ScannedFile {
 
 export const useScannedFiles = () => {
   return useQuery<ScannedFile[], Error>({
-    queryKey: ["scanned-files"], // Unique key for caching
-    queryFn: getScannedFiles, // Fetch data from the API
-    refetchInterval: 1000, // Optional: auto-refresh every 60 seconds (if needed)
+    queryKey: ["scanned-files"], 
+    queryFn: getScannedFiles, 
+    refetchInterval: 1000, 
   });
 };
 export const useScannedUrls = () => {
   return useQuery<ScannedFile[], Error>({
-    queryKey: ["scanned-Urls"], // Unique key for caching
-    queryFn: getScannedUrls, // Fetch data from the API
-    refetchInterval: 1000, // Optional: auto-refresh every 60 seconds (if needed)
+    queryKey: ["scanned-Urls"], 
+    queryFn: getScannedUrls, 
+    refetchInterval: 1000, 
   });
 };
 
@@ -103,11 +103,9 @@ export const useDeleteScannedFile = () => {
   return useMutation({
     mutationFn: (id: number) => deleteScannedFile(id),
     onSuccess: () => {
-      // Handle success (e.g., refetch files or show success notification)
       toast.success("File deleted successfully!");
     },
     onError: error => {
-      // Handle error (e.g., show error notification)
       console.error("Error deleting file:", error);
     },
   });

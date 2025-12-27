@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, createContext, useContext, useEffect } from "react";
 import {
   DndContext,
@@ -115,27 +116,23 @@ const TableHeaderCell: React.FC<HeaderCellProps> = (props) => {
 };
 
 const UploadTable: React.FC = () => {
-  // const { data = [],  } = useGetAllScanned();
 
   const [dragIndex, setDragIndex] = useState<DragIndexState>({
     active: -1,
     over: -1,
   });
 
-  
-  // Update your hook usage with the correct data type
-  const { data, refetch } = useGetAllScanned(); // Get scanned data and refetch function
+
+  const { data, refetch } = useGetAllScanned(); 
   console.log(data, "Scanned data from API");
 
   const [dataSource, setDataSource] = useState<DataType[]>([]);
   const { mutate: deleteFile } = useDeleteScannedFile(); 
 
-  // ✅ Update state when new data comes in
   useEffect(() => {
-    // Check if the data has content before updating
-    if (data?.length === 0) return; // If data is empty, do not update
+    if (data?.length === 0) return; 
 
-    // Map through the data and format it as per the table requirements
+
 const formattedData: DataType[] = data?.map((item) => {
   const fileName = item.file_url?.split("/").pop() || item?.url?.split("/").pop();
   return {
@@ -149,31 +146,14 @@ const formattedData: DataType[] = data?.map((item) => {
   };
 }) ?? [];
 
+    setDataSource(formattedData); 
+  }, [data]);
 
-    // Only update the state if data has changed or is non-empty
-    setDataSource(formattedData); // Set the formatted data into state
-  }, [data]); // Only run
 
-  // const toggleSave = (key: string) => {
-  //   setDataSource((prev) =>
-  //     prev.map((item) =>
-  //       item.key === key ? { ...item, saved: !item.saved } : item
-  //     )
-  //   );
-  // };
-
-  // const handleEdit = (key: string) => {
-  //   alert(`Editing row ${key}`);
-  // };
-
-  // const handleDelete = (key: string) => {
-  //   setDataSource((prev) => prev.filter((item) => item.key !== key));
-  // };
   const handleDelete = async (key: string) => {
     try {
-      // Call the delete function to delete the file by its key (ID)
       await deleteFile(parseInt(key));
-      refetch(); // Refetch the data after deletion to update the table
+      refetch(); 
     } catch (error) {
       console.error("Error deleting the file:", error);
     }
@@ -238,29 +218,7 @@ const formattedData: DataType[] = data?.map((item) => {
       onHeaderCell: () => ({ id: "date" }),
       onCell: () => ({ id: "date" }),
     },
-    // {
-    //   title: "Action",
-    //   key: "action",
-    //   render: (_: any, record: DataType) => (
-    //     <Button
-    //       style={{
-    //         height: "48px",
-    //         width: "140px",
-    //         color: record.saved ? "#4BB23D" : "#FF4D4F",
-    //         background: record.saved ? "#F3FFEB" : "#FFEFEF",
-    //         border: `1px solid ${record.saved ? "#E2F5D5" : "#FFA39E"}`,
-    //         fontWeight: 600,
-    //         fontSize: "14px",
-    //         borderRadius: "8px",
-    //       }}
-    //       onClick={() => toggleSave(record.key)}
-    //     >
-    //       {record.saved ? "Save" : "Fraud Alert"}
-    //     </Button>
-    //   ),
-    //   onHeaderCell: () => ({ id: "action" }),
-    //   onCell: () => ({ id: "action" }),
-    // },
+
 
     {
       title: "Status",
@@ -281,29 +239,7 @@ const formattedData: DataType[] = data?.map((item) => {
       onHeaderCell: () => ({ id: "status" }),
       onCell: () => ({ id: "status" }),
     },
-    // {
-    //   title: "",
-    //   key: "edit",
-    //   render: (_: any, record: DataType) => {
-    //     const menu = (
-    //       <Menu>
-    //         <Menu.Item key="edit" onClick={() => handleEdit(record.key)}>
-    //           Edit
-    //         </Menu.Item>
-    //         <Menu.Item key="delete" onClick={() => handleDelete(record.key)}>
-    //           Delete
-    //         </Menu.Item>
-    //       </Menu>
-    //     );
-    //     return (
-    //       <Dropdown overlay={menu} trigger={["click"]}>
-    //         <Button icon={<MoreOutlined />} />
-    //       </Dropdown>
-    //     );
-    //   },
-    //   onHeaderCell: () => ({ id: "edit" }),
-    //   onCell: () => ({ id: "edit" }),
-    // },
+
 {
   title: "",
   key: "delete",
@@ -334,7 +270,7 @@ const formattedData: DataType[] = data?.map((item) => {
         columns.findIndex((i) => i.key === over?.id)
       );
       if (newColumns !== columns) {
-        setColumns(newColumns); // Update state only if columns have actually changed
+        setColumns(newColumns); 
       }
     }
   };

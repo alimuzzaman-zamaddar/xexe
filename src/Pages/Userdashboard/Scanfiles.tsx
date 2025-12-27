@@ -37,7 +37,6 @@ const Scanfiles = () => {
     }
   };
 
-  // ✅ File Upload Handler
   const handleFileUpload = () => {
     if (!selectedFile) {
       toast.error("Please select a file first");
@@ -45,7 +44,6 @@ const Scanfiles = () => {
     }
     scanNow(selectedFile, {
       onSuccess: () => {
-        // Reset the file input and form after successful scan
         setSelectedFile(null);
         if (fileInputRef.current) {
           fileInputRef.current.value = ""; 
@@ -58,7 +56,7 @@ const Scanfiles = () => {
     console.log("File upload initiated:", selectedFile.name);
   };
 
-  const [emailBody, setEmailBody] = useState(""); // State to store the email body content
+  const [emailBody, setEmailBody] = useState(""); 
   const {
     mutate: scanEmail,
     isPending: isEmailScanning,
@@ -70,7 +68,7 @@ const Scanfiles = () => {
       toast.error("Please paste the email content.");
       return;
     }
-    scanEmail(emailBody); // Trigger the email scan when submit button is clicked
+    scanEmail(emailBody); 
   };
 
   const { user } = useAuth();
@@ -175,23 +173,20 @@ const Scanfiles = () => {
 
             <TabPanel>
               <div className="mt-10">
-                {/* Title */}
                 <h3 className="text-2xl sm:text-[28px] lg:text-[32px] font-popins font-semibold text-[#111315]">
                   Paste Your Email Content Get Instant AI Risk Analysis
                 </h3>
-                {/* Email Input Area */}
                 <div className="bg-[#FBFBFB] w-full min-h-[300px] sm:min-h-[350px] md:min-h-[400px] rounded-[20px] border border-dashed border-[#ADADAD] gap-6 px-4 py-4 sm:py-6 mt-5">
                   <textarea
                     placeholder="Paste the full content of your email here..."
                     value={emailBody}
-                    onChange={e => setEmailBody(e.target.value)} // Capture the email body input
+                    onChange={e => setEmailBody(e.target.value)} 
                     className="w-full h-[300px] resize-none bg-transparent outline-none text-[#111315] placeholder:text-[#ADADAD] font-popins text-base sm:text-lg"
                   />
                 </div>
-                {/* Continue Button */}
                 <div className="flex justify-end">
                   <button
-                    onClick={handleSubmit} // Submit the email body for scanning
+                    onClick={handleSubmit} 
                     disabled={isEmailScanning}
                     className="px-6 h-[48px] sm:h-[56px] cursor-pointer mt-5 border border-[#52ABFF] rounded-[10px] font-inter text-base sm:text-lg hover:bg-white hover:text-[#52ABFF] font-semibold bg-[#52ABFF] text-white transition-all duration-300"
                   >
@@ -202,29 +197,23 @@ const Scanfiles = () => {
                 {data && (
                   <div className="mt-5 p-4 bg-[#F0F0F0] rounded-md">
                     <h4 className="text-lg font-semibold mb-3">Scan Result:</h4>
-
-                    {/* Display resultContent in a readable blog-style manner */}
                     {data.data?.resultContent && (
                       <div className="mb-4">
                         <h5 className="font-semibold">Analysis Summary:</h5>
-
-                        {/* Clean resultContent */}
                         <div className="text-[#111315] font-popins text-base sm:text-lg space-y-4 mt-2">
                           {data.data.resultContent
                             .replace(
-                              /[*_~`!@#$%^&*()+=\[\]{}|\\:;"'<>,.?/]/g,
+                              /[*_~`!@#$%^&*()+=[\]{}|\\:;"'<>,.?/]/g,
                               ""
-                            ) // Remove special characters
-                            .split("\n") // Split into lines
-                            .filter((line: string) => line.trim()) // Remove empty lines
+                            ) 
+                            .split("\n") 
+                            .filter((line: string) => line.trim()) 
                             .map((line: string, idx: number) => (
-                              <p key={idx}>{line}</p> // Display each line as a paragraph
+                              <p key={idx}>{line}</p>
                             ))}
                         </div>
                       </div>
                     )}
-
-                    {/* Show links if available */}
                     {Array.isArray(data.data?.links) &&
                       data.data.links.length > 0 && (
                         <div>
@@ -262,7 +251,6 @@ const Scanfiles = () => {
                       )}
                   </div>
                 )}
-                {/* Why Connect Section */}
                 <div className="mt-10">
                   <h3 className="text-2xl sm:text-[28px] lg:text-[32px] font-popins font-semibold text-[#111315]">
                     Why connect your email?
@@ -301,14 +289,6 @@ const Scanfiles = () => {
                   </button>
                 </div>
 
-                {/* {urlScanData && (
-                  <div className="mt-6 p-4 bg-[#F0F0F0] rounded-md">
-                    <h4 className="text-lg font-semibold mb-2">Scan Result:</h4>
-                    <pre className="text-sm font-mono whitespace-pre-wrap text-[#333]">
-                      {JSON.stringify(urlScanData.data || urlScanData, null, 2)}
-                    </pre>
-                  </div>
-                )} */}
               </div>
               <div className="py-10">
                 <ShowScannedUrls />
