@@ -25,7 +25,7 @@ export default function useLocalStorage<T>(
   };
 
   const clearState = () => {
-    setValue(initialValue); // You can choose `null` if preferred
+    setValue(initialValue); 
     removeItem(key);
   };
 

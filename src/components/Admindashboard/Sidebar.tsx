@@ -5,9 +5,6 @@ import Sidebarimg from "../../assets/images/sidebarimg.png";
 import userSidebarimg from "../../assets/images/usersidebarimg1.png";
 import {
   Dashboardicon,
-  // Emaildashboardicon,
-  // Inbox,
-  // Reposts,
   Scanfiles,
 } from "../../assets/icons/Icons";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -29,9 +26,6 @@ export const navMenu: NavItem[] = [
   { name: "Scanned Files", icon: <Scanfiles />, path: "allfiles" },
   { name: "Scan Files", icon: <Scanfiles />,path: "scanfiles", },
   { name: "Go Home", icon: <FaHome />, path: "/" },
-  // { name: "Email Connect", icon: <Emaildashboardicon />, path: "" },
-  // { name: "Reports", icon: <Reposts />, path: "" },
-  // { name: "Inbox", icon: <Inbox />, path: "" },
 ];
 
 export const Settingmenu: NavItem[] = [
@@ -46,7 +40,6 @@ const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  // const {user} = useAuth(); // Assuming useAuth is imported and provides user data
   console.log(user)
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);

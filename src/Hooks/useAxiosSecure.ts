@@ -5,7 +5,7 @@ export const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_SITE_URL,
 });
 
-// ✅ Attach token
+
 axiosSecure.interceptors.request.use(
   (config) => {
     const token = getItem('token');
@@ -17,7 +17,7 @@ axiosSecure.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ✅ Handle expired/invalid tokens
+
 axiosSecure.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -25,13 +25,12 @@ axiosSecure.interceptors.response.use(
     if (error.response?.status === 401 || error.response?.status === 403) {
       console.warn('Token expired or invalid. Logging out...');
       removeItem('token');
-      window.location.href = '/login'; // ✅ redirect instead of reload
+      window.location.href = '/login'; 
     }
     return Promise.reject(error);
   }
 );
 
-// ✅ Rename export to avoid ESLint error
 const getAxiosSecure = () => {
   return axiosSecure;
 };

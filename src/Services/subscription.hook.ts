@@ -28,10 +28,10 @@ export const useCurrentSubscription = () => {
 
 
 export const useCancelSubscription = () => {
-  const { refetchUser } = useAuth(); // Get refetchUser from context
+  const { refetchUser } = useAuth(); 
   return useMutation({
-    mutationKey: ["cancel-subscription"],  // Unique key for React Query caching
-    mutationFn: cancelSubscription,       // The API function for canceling subscription
+    mutationKey: ["cancel-subscription"],  
+    mutationFn: cancelSubscription,       
     onSuccess: (data) => {
       // Handle success here
       console.log("Subscription canceled successfully:", data);
