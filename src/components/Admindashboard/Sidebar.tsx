@@ -49,7 +49,7 @@ const Sidebar = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000); // simulate loading
+    }, 2000); 
   };
 
   const isPathActive = (path: string) => location.pathname === path;
@@ -102,9 +102,6 @@ const Sidebar = () => {
         </ul>
 
         <div className="pt-10">
-          {/* <h3 className="text-[#FFF] font-popins text-[20px] lg:text-[24px] font-semibold pl-[50px]">
-            Settings
-          </h3> */}
           <ul className="pt-5 flex flex-col gap-3">
             {Settingmenu.map((menu, index) => {
               const isActive = isPathActive(menu.path);
@@ -205,30 +202,6 @@ const Sidebar = () => {
                   </div>
                 </div>
 
-                {/* <div className="bg-[#FFF] shadow-2xl p-[30px] rounded-[20px] mt-5">
-                  <h4 className="font-popins text-[20px] text-[#111315]">
-                    Current Subscription
-                  </h4>
-                  <div className="flex flex-col md:flex-row justify-between gap-5 items-start md:items-center">
-                    <p className="text-[#ADADAD] font-popins text-base sm:text-lg">
-                      {data?.description || "No active subscription"}
-                    </p>
-                    <button
-                      className="px-3 shrink-0 h-[48px] mt-5 border border-[#003072] rounded-[10px] font-inter hover:bg-white hover:text-[#003072]
-                     font-semibold bg-[#003072] text-white transition-all duration-300 w-fit"
-                    >
-                      {data?.plan || "plan"}
-                    </button>
-                  </div>
-                  <div className="mt-5 flex justify-between">
-                    <h3 className="text-[#232323] font-popins text-sm md:text-base">
-                      Deadline
-                    </h3>
-                    <p className="text-[#ADADAD] font-popins text-sm md:text-base">
-                      {data?.expire_date || "No expiration date"}
-                    </p>
-                  </div>
-                </div> */}
               </div>
             </div>
           )}
