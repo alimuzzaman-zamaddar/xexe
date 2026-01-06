@@ -69,9 +69,9 @@ const Sidebar = () => {
       </div>
 
       <div
-        className={`bg-[#003072] fixed top-0 left-0 h-screen z-50 transition-transform duration-500 ease-in-out px-3 py-[45px] w-[260px] ${
+        className={`bg-[#003072] fixed top-0 left-0 h-screen z-50 transition-transform duration-500 ease-in-out px-3 py-11.25 w-65 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:static lg:flex lg:flex-col lg:w-[350px]`}
+        } lg:translate-x-0 lg:static lg:flex lg:flex-col lg:w-87.5`}
       >
         <figure className="flex justify-center">
           <img src={Logo} alt="Logo" />
@@ -87,7 +87,7 @@ const Sidebar = () => {
                   handleClick(menu.path);
                   setIsOpen(false);
                 }}
-                className={`font-popins text-[18px] flex gap-x-5 items-center pl-[50px] font-medium px-4 py-3 rounded-[10px] transition-all duration-200 cursor-pointer capitalize ${
+                className={`font-popins text-[18px] flex gap-x-5 items-center pl-12.5 font-medium px-4 py-3 rounded-[10px] transition-all duration-200 cursor-pointer capitalize ${
                   isActive
                     ? "bg-[#52ABFF] text-white"
                     : "text-white hover:bg-[#52ABFF]"
@@ -111,7 +111,7 @@ const Sidebar = () => {
                     handleClick(menu.path);
                     setIsOpen(false);
                   }}
-                  className={`font-popins text-[18px] flex gap-x-5 items-center pl-[50px] font-medium px-4 py-3 rounded-[10px] transition-all duration-200 cursor-pointer capitalize ${
+                  className={`font-popins text-[18px] flex gap-x-5 items-center pl-12.5 font-medium px-4 py-3 rounded-[10px] transition-all duration-200 cursor-pointer capitalize ${
                     isActive
                       ? "bg-[#52ABFF] text-white"
                       : "text-white hover:bg-[#52ABFF]"
@@ -124,7 +124,7 @@ const Sidebar = () => {
             })}
           </ul>
         </div>
-        <div onClick={showModal}  className="flex cursor-pointer mt-auto gap-x-3 items-center pt-6 pl-[50px]">
+        <div onClick={showModal}  className="flex cursor-pointer mt-auto gap-x-3 items-center pt-6 pl-12.5">
           <figure>
             <img src={Sidebarimg} alt="Sidebarimg" />
           </figure>
@@ -164,7 +164,7 @@ const Sidebar = () => {
                   : userSidebarimg
               }
               alt="userSidebarimg"
-              className="xl:w-[200px]"
+              className="xl:w-50"
             />
                 </figure>
                 <div className="">
@@ -178,7 +178,7 @@ const Sidebar = () => {
               </div>
 
               <div className="flex flex-col w-full">
-                <div className="bg-[#FFF] shadow-2xl p-[30px] rounded-[20px]">
+                <div className="bg-[#FFF] shadow-2xl p-7.5 rounded-[20px]">
                   <div>
                     <label className="block text-[16px] md:text-[20px] font-semibold text-[#232323] font-popins capitalize pb-2 md:pb-4">
                       {user?.name || "Username"}
@@ -186,7 +186,7 @@ const Sidebar = () => {
                     <input
                       type="text"
                       placeholder={user?.name || "Username"}
-                      className="rounded-[12px] md:rounded-[10px] bg-[#F9F9F9] px-6 py-3 w-full text-[16px] md:text-[18px] text-[#ADADAD] font-popins outline-none border-none"
+                      className="rounded-xl md:rounded-[10px] bg-[#F9F9F9] px-6 py-3 w-full text-[16px] md:text-[18px] text-[#ADADAD] font-popins outline-none border-none"
                     />
                   </div>
                   <div className="pt-4">
@@ -196,7 +196,7 @@ const Sidebar = () => {
                     <input
                       type="text"
                       placeholder={user?.email || "Email"}
-                      className="rounded-[12px] md:rounded-[10px] bg-[#F9F9F9] px-6 py-3 w-full text-[16px] md:text-[18px] text-[#ADADAD] font-popins outline-none border-none"
+                      className="rounded-xl md:rounded-[10px] bg-[#F9F9F9] px-6 py-3 w-full text-[16px] md:text-[18px] text-[#ADADAD] font-popins outline-none border-none"
                     />
                   </div>
                 </div>

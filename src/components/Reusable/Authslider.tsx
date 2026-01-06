@@ -5,8 +5,7 @@ import { Swiper, SwiperSlide,} from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-// import "swiper/css/navigation";
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi"; // Import arrow icons from react-icons
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi"; 
 
 const Authslider = () => {
   const testimonial = [
