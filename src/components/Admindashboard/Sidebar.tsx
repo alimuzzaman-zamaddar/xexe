@@ -55,7 +55,6 @@ const Sidebar = () => {
   const isPathActive = (path: string) => location.pathname === path;
   const handleClick = (path: string) => navigate(path);
 
-  // Logout mutation
   const { mutate: logout, isPending } = useLogout();
 
   return (
