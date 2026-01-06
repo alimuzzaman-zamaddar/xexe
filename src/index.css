@@ -76,13 +76,7 @@
 :where(.css-dev-only-do-not-override-1m2bkf9).ant-table-wrapper table {
   padding: 40px 30px !important;
 }
-/* :where(.css-dev-only-do-not-override-1m2bkf9) {
-  background-color: transparent;
-}
-:where(.css-dev-only-do-not-override-1m2bkf9).ant-table-wrapper .ant-table-container{
-  border-radius: 20px;
-  background-color: #141414;
-}  */
+
 
 .react-tabs__tab--selected {
   font-weight: 600;
