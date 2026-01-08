@@ -40,8 +40,8 @@ const ScanCard = ({ item }: { item: any }) => {
 
   return (
     <Card
-  className="w-full h-full rounded-2xl border border-[#003072] overflow-hidden flex flex-col"
-  bodyStyle={{ padding: 0, flex: 1 }}
+      className="w-full h-full rounded-2xl border border-[#003072] overflow-hidden flex flex-col"
+      bodyStyle={{ padding: 0, flex: 1 }}
       title={
         <div className="flex items-center justify-between gap-4 pt-5">
           <div className="flex items-center gap-3 min-w-0">
@@ -49,9 +49,16 @@ const ScanCard = ({ item }: { item: any }) => {
               {isUrl ? <RiLinksLine size={22} /> : <FaFile size={20} />}
             </div>
 
-            <h3 className="font-semibold text-[#003072] truncate text-base">
-              {title}
-            </h3>
+            <a
+              href={isUrl && item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="truncate"
+            >
+              <h3 className="font-semibold text-[#003072] truncate text-base">
+                {title}
+              </h3>
+            </a>
           </div>
         </div>
       }
@@ -82,10 +89,7 @@ const ScanCard = ({ item }: { item: any }) => {
                 <div
                   className="h-full bg-gradient-to-r from-yellow-500 to-yellow-600"
                   style={{
-                    width: `${Math.min(
-                      parseInt(item.risk_score),
-                      100
-                    )}%`,
+                    width: `${Math.min(parseInt(item.risk_score), 100)}%`,
                   }}
                 />
               </div>
@@ -136,7 +140,7 @@ const ScanCard = ({ item }: { item: any }) => {
         </div>
 
         {/* ACTIONS */}
-        <div className="px-5 py-4 border-t border-[#003072]/10 bg-[#003072] flex items-center justify-between" >
+        <div className="px-5 py-4 border-t border-[#003072]/10 bg-[#003072] flex items-center justify-between">
           {item.file_url ? (
             <Button
               icon={<DownloadOutlined />}
