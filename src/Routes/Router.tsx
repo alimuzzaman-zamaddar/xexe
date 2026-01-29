@@ -17,11 +17,12 @@ import Error from "../Pages/Error";
 import OtpVerify from "../Pages/AuthPage/OtpVerify";
 import PrivateRoute from "./PrivateRoute";
 import { CreateUser } from "../Pages/Userdashboard/CreateUser";
-import PrivacyPolicy from "../Pages/legal/privacy-policy";
-import TermsAndConditions from "../Pages/legal/terms-and-conditions";
+// import PrivacyPolicy from "../Pages/legal/privacy-policy";
+// import TermsAndConditions from "../Pages/legal/terms-and-conditions";
 import ChangePassword from "../Pages/AuthPage/ChangePassword";
 import DataTable from "../components/Reusable/DataTable";
 import OtpVerifyreg from "../Pages/AuthPage/OtpVerifyreg";
+import DynamicPage from "../Pages/legal/DynamicPage";
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +33,10 @@ export const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "pricing", element: <Pricing /> },
       { path: "contact", element: <Contact /> },
-      { path: "/privacy-policy", element: <PrivacyPolicy /> },
-      { path: "/terms-and-conditions", element: <TermsAndConditions /> },
+       { path: ":slug", element: <DynamicPage /> },
+
+      // { path: "/privacy-policy", element: <PrivacyPolicy /> },
+      // { path: "/terms-and-conditions", element: <TermsAndConditions /> },
     ],
   },
   { path: "/signup", element: <Signup /> },

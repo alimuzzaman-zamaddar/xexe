@@ -2,7 +2,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { deleteScannedFile, getAllScanned, getScannedFiles, getScannedUrls, scanEmail, scanFile, scanUrlFunction, type ScanUrlPayload } from "./scan.api";
 import toast from "react-hot-toast";
-import type { ScanfilesDataType } from "../Pages/Userdashboard/UploadTable";
 
 export const useScanFile = () =>
   useMutation({
@@ -18,7 +17,7 @@ export const useScanFile = () =>
 
 
 export const useGetAllScanned = () => {
-  return useQuery<ScanfilesDataType[], Error>({
+  return useQuery<any, Error>({
     queryKey: ['scanned-files'],
     queryFn: getAllScanned,
    

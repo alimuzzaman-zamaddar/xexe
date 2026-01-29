@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -48,11 +49,22 @@ const Signup = () => {
       navigate("/otp-verifyreg", { state: { email: data.email, password: data.password }});
       
 
-    } catch (err) {
-      setLoading(false)
-      toast.error("Registration failed try again or another email")
-      console.error("Registration failed:", err);
-    }
+} catch (err) {
+  setLoading(false);
+
+  // Axios error response
+  const response = (err as any)?.response?.data;
+
+  if (response?.code === 422 && response?.data) {
+    // Get first validation error message
+    const firstError = (Object.values(response.data)[0] as string[])?.[0];
+    toast.error(firstError || "Validation error");
+  } else {
+    toast.error("Registration failed. Please try again.");
+  }
+
+  console.error("Registration failed:", err);
+}
   };
 
    const { mutate: socialLogin } = useSocialLogin();

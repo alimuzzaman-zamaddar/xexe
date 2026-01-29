@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import getAxiosSecure from "../Hooks/useAxiosSecure";
-import type { ScanfilesDataType } from "../Pages/Userdashboard/UploadTable";
 
 export const scanFile = async (file: File, ) => {
   const formData = new FormData();
@@ -16,7 +16,7 @@ export const scanFile = async (file: File, ) => {
   return response.data;
 }
 
-export const getAllScanned = async (): Promise<ScanfilesDataType[]> => {
+export const getAllScanned = async (): Promise<any> => {
   const axiosSecure = getAxiosSecure();
   const response = await axiosSecure.get("/api/all-scanned");
   return response?.data?.data || []; // Ensure it returns an array, fallback to empty array

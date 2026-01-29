@@ -79,10 +79,10 @@ const Footer = () => {
                 Company
               </li>
               <li className="text-[#B8B8B8] hover:underline font-inter lg:text-[18px] md:text-[16px] font-normal cursor-pointer hover:text-[#76B6F3]  duration-300 transition-all ease-in-out">
-                <Link to="/privacy-policy">Privacy Policy</Link>
+                <Link to="/privacy-and-policy">Privacy Policy</Link>
               </li>
               <li className="text-[#B8B8B8]  hover:underline font-inter lg:text-[18px] md:text-[16px] font-normal cursor-pointer hover:text-[#76B6F3]  duration-300 transition-all ease-in-out">
-                <Link to="/terms-and-conditions">Terms and condition</Link>
+                <Link to="/terms-conditions">Terms & Conditions</Link>
               </li>
               <li className="text-[#B8B8B8] hover:underline font-inter lg:text-[18px] md:text-[16px] font-normal cursor-pointer hover:text-[#76B6F3] duration-300 transition-all ease-in-out">
                 <a href="mailto:support@xeltrasoftware.com">support@xeltrasoftware.com</a>
