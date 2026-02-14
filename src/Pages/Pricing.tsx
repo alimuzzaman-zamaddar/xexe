@@ -39,7 +39,7 @@ const Pricing = () => {
               title="Basic Plan"
               description=""
               price={90}
-              buttonText="Current Plan"
+              buttonText="Go Basic"
               features={features}
               supportInfo="Email support with a 48-hour response time."
               isCurrent
@@ -50,7 +50,7 @@ const Pricing = () => {
               title="Pro plan"
               description=""
               price={250}
-              buttonText="Get Advance"
+              buttonText="Go Pro"
               features={features1}
               supportInfo="Email support with a 48-hour response time."
               isCurrent
@@ -61,7 +61,7 @@ const Pricing = () => {
               title="Enterprise Plan"
               description=""
               price={400}
-              buttonText="Current plan"
+              buttonText="Go Enterprise"
               features={features2}
               isCurrent
               extraFeatures={[
