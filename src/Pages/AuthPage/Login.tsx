@@ -65,7 +65,12 @@ const Login = () => {
       setLoading(false); // Set loading to false once login is completed
     } catch (err: any) {
       setLoading(false); // Set loading to false on error
-      toast(err?.response?.data?.message || "Login failed");
+      if (err?.response?.data?.message === "Please verify your email to login. 4 digit OTP send to your mail to verify your email.") {
+        toast.error("Please verify your email before logging in.");
+        navigate("/forgot-password");
+      } else {
+        toast.error(err?.response?.data?.message || "Login failed");
+      }
     }
   };
 

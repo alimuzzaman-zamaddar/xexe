@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useQuery, type UseQueryOptions } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 import { CreateUserFunction, EmailVerifyFunction, GetUserDataFunction, logoutApi, OtpResendFunction, RegisterFunction, ResetPasswordFunction, SocialLoginFunction, updateUserData, VerifyOtpFunction, type ResetPasswordPayload, type UpdateUserPayload } from "./auth.api";
